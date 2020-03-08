@@ -5,19 +5,27 @@ using UnityEngine.UI;
 
 public class ProgressSwitch : MonoBehaviour
 {
-    public Image upImage;
-    public Image downImage;
-    public Image lockedImage;
+    public List<Sprite> sprites = new List<Sprite>();
+    private Image img;
 
     // 0 = up
     // 1 = down
     // 2 = locked
     [SerializeField]
     int progressInt;
+    [SerializeField]
+    enum EProgressState
+    {
+        up,
+        down,
+        locked
+    }
+    EProgressState ECurrentProgressState;
 
     void Start()
     {
         progressInt = 0;
+        img = GetComponent<Image>();
         switchActiveProgression();
     }
 
@@ -36,22 +44,17 @@ public class ProgressSwitch : MonoBehaviour
 
     void switchActiveProgression()
     {
-        switch (progressInt)
+        ECurrentProgressState = (EProgressState)progressInt;
+        switch (ECurrentProgressState)
         {
-            case 0:
-                upImage.enabled = true;
-                downImage.enabled = false;
-                lockedImage.enabled = false;
+            case EProgressState.up:
+                img.sprite = sprites[0];
                 break;
-            case 1:
-                upImage.enabled = false;
-                downImage.enabled = true;
-                lockedImage.enabled = false;
+            case EProgressState.down:
+                img.sprite = sprites[1];
                 break;
-            case 2:
-                upImage.enabled = false;
-                downImage.enabled = false;
-                lockedImage.enabled = true;
+            case EProgressState.locked:
+                img.sprite = sprites[2];
                 break;
             default:
                 break;

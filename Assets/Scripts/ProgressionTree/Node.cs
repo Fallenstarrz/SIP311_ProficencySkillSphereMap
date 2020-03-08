@@ -68,4 +68,9 @@ public class Node : MonoBehaviour
             buttonImage.color = defaultColor;
         }
     }
+
+    // Editor tool to create node connected to this node
+    // Also spawn a connection
+#if UNITY_EDITOR
+#endif
 }
