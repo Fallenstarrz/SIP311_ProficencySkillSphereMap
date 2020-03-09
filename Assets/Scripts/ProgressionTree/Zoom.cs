@@ -23,7 +23,6 @@ public class Zoom : MonoBehaviour
 
     private void ChangeZoom(float scrollWheel)
     {
-
         float rate = 1 + zoomRate * Time.unscaledDeltaTime;
         if (scrollWheel > 0 && transform.localScale.y > minSize)
         {

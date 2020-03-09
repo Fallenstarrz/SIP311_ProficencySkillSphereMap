@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public string skillName;
+    public int skillLevelMax;
+    public int skillLevelCurrent;
+    public int skillExpCurrent;
+    public int skillExpMax;
+    public int skillPointsAvailable;
+    public int currentSetting;
+    public Sprite skillIcon;
 }
