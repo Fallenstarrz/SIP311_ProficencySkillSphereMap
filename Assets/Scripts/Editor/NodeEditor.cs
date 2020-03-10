@@ -10,10 +10,15 @@ public class NodeEditor : Editor
 
         Node skillMap = (Node)target;
 
-        if (GUILayout.Button("Generate New Skill Map"))
+        if (GUILayout.Button("Create New Connection and Node"))
         {
             // Create new node
             // Hook up the connection
+        }
+
+        if (GUILayout.Button("Create Connection To Existing Node"))
+        {
+
         }
     }
 }

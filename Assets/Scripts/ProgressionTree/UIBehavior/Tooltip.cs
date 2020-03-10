@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tooltip : MonoBehaviour
 {
     public GameObject testObj;
-    public GameObject testSpawn;
+    private GameObject testSpawn;
 
     public void showTooltip()
     {

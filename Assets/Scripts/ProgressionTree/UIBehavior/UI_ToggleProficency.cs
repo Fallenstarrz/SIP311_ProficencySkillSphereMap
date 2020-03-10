@@ -8,4 +8,9 @@ public class UI_ToggleProficency : MonoBehaviour
     {
         GetComponentInParent<SkillMapCreator>().enableSkillTree(this.gameObject);
     }
+
+    public void changeActiveIcon()
+    {
+
+    }
 }

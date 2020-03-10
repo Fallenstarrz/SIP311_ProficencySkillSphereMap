@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class SkillMapCreator : MonoBehaviour
 {
     public GameObject skillMapPrefab;
@@ -56,6 +55,7 @@ public class SkillMapCreator : MonoBehaviour
         }
     }
 
+    // TODO: Swap out for an event instead
     public void enableSkillTree(GameObject treeToEnable)
     {
         for (int i = 0; i < proficiencyListItems.Count; i++)
