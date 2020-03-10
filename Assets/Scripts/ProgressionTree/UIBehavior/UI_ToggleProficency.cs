@@ -6,6 +6,6 @@ public class UI_ToggleProficency : MonoBehaviour
 {
     public void toggleActive()
     {
-        this.gameObject.SetActive(!gameObject.activeInHierarchy);
+        GetComponentInParent<SkillMapCreator>().enableSkillTree(this.gameObject);
     }
 }

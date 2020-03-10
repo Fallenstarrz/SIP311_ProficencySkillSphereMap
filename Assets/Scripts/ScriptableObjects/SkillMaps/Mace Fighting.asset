@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb12d2be965c0754e831da19b424a10d, type: 3}
+  m_Name: Mace Fighting
+  m_EditorClassIdentifier: 
+  skillName: Mace Fighting
+  skillIcon: {fileID: 21300000, guid: 20439620089a2954594b87bb591720a5, type: 3}
+  skillIconColor: {r: 1, g: 1, b: 1, a: 1}
+  backgroundTexture: {fileID: 21300000, guid: 88fb77549f607584ba47afbcb9a1c132, type: 3}
+  backgroundTextureColor: {r: 0.1254902, g: 0.0627451, b: 0, a: 1}
+  backgroundImg: {fileID: 21300000, guid: 25b70bef28ce70a4f88a45c527e1223f, type: 3}
+  backgroundImgColor: {r: 1, g: 1, b: 1, a: 1}
+  skillLevelMax: 100
+  skillLevelCurrent: 0
+  skillExpMax: 100
+  skillExpCurrent: 0
+  skillPointsAvailable: 0

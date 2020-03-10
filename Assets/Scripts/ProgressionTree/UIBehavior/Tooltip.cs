@@ -10,12 +10,10 @@ public class Tooltip : MonoBehaviour
     public void showTooltip()
     {
         testSpawn = Instantiate(testObj, testObj.transform.position, testObj.transform.rotation);
-        Debug.Log("Show Tooltip");
     }
 
     public void hideTooltip()
     {
         Destroy(testSpawn);
-        Debug.Log("Hide Tooltip");
     }
 }

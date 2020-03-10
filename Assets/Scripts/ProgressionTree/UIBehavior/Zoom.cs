@@ -2,7 +2,6 @@
 
 public class Zoom : MonoBehaviour
 {
-    [SerializeField] float startSize = 1;
     [SerializeField] float minSize = 0.5f;
     [SerializeField] float maxSize = 1.5f;
 
