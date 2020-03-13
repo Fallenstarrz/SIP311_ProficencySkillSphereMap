@@ -19,23 +19,27 @@ public class SkillMapCreator : MonoBehaviour
     public SkillsMap myMap;
     public List<SkillsMap> myMaps;
 
+    // Create object to represent the skill map and the proficiency list based on a the scriptable object myMap value
     public void createNewSkillMap()
     {
-
         {
             GameObject skillMap = Instantiate(skillMapPrefab, skillMapContainer);
             skillMaps.Add(skillMap);
-            skillMap.GetComponent<SkillMapSetup>().setupUI(myMap.skillName, myMap.backgroundImg, myMap.backgroundImgColor, myMap.backgroundTexture, myMap.backgroundTextureColor);
+            skillMap.GetComponent<SkillMapSetup>().setupUI(myMap);
+            myMap.m_Map = GetComponent<SkillMapSetup>();
         }
         {
             GameObject proficiencyItem = Instantiate(proficiencyListPrefab, proficiencyListContainer);
             RectTransform profTf = proficiencyItem.GetComponent<RectTransform>();
             profTf.anchoredPosition = new Vector2(profTf.anchoredPosition.x, (FirstItemDistanceFromStartOfList + (proficiencyListItems.Count * distanceBetweenProfListItems)));
             proficiencyListItems.Add(proficiencyItem);
-            proficiencyItem.GetComponent<ProficiencySetup>().setupUI(myMap.skillName, myMap.skillLevelCurrent, myMap.skillExpMax, myMap.skillExpCurrent, myMap.skillPointsAvailable, myMap.skillIcon);
+            proficiencyItem.GetComponent<ProficiencySetup>().SetupProficiency(myMap);
+            myMap.m_Proficiency = proficiencyItem.GetComponent<ProficiencySetup>();
         }
+        enableSkillTreeDefault();
     }
 
+    // Create objects to represent the skill map and the proficiency list based on a the scriptable object myMaps list values
     public void createNewSkillMapsFromList()
     {
         foreach (SkillsMap map in myMaps)
@@ -43,19 +47,22 @@ public class SkillMapCreator : MonoBehaviour
             {
                 GameObject skillMap = Instantiate(skillMapPrefab, skillMapContainer);
                 skillMaps.Add(skillMap);
-                skillMap.GetComponent<SkillMapSetup>().setupUI(map.skillName, map.backgroundImg, map.backgroundImgColor, map.backgroundTexture, map.backgroundTextureColor);
+                skillMap.GetComponent<SkillMapSetup>().setupUI(map);
+                map.m_Map = skillMap.GetComponent<SkillMapSetup>();
             }
             {
                 GameObject proficiencyItem = Instantiate(proficiencyListPrefab, proficiencyListContainer);
                 RectTransform profTf = proficiencyItem.GetComponent<RectTransform>();
                 profTf.anchoredPosition = new Vector2(profTf.anchoredPosition.x, (FirstItemDistanceFromStartOfList + (proficiencyListItems.Count * distanceBetweenProfListItems)));
                 proficiencyListItems.Add(proficiencyItem);
-                proficiencyItem.GetComponent<ProficiencySetup>().setupUI(map.skillName, map.skillLevelCurrent, map.skillExpMax, map.skillExpCurrent, map.skillPointsAvailable, map.skillIcon);
+                proficiencyItem.GetComponent<ProficiencySetup>().SetupProficiency(map);
+                map.m_Proficiency = proficiencyItem.GetComponent<ProficiencySetup>();
             }
         }
+        enableSkillTreeDefault();
     }
 
-    // TODO: Swap out for an event instead
+    // Enable and disable skill trees, so only 1 may be active at a time
     public void enableSkillTree(GameObject treeToEnable)
     {
         for (int i = 0; i < proficiencyListItems.Count; i++)
@@ -69,6 +76,16 @@ public class SkillMapCreator : MonoBehaviour
             {
                 skillMaps[i].SetActive(false);
             }
+        }
+    }
+
+    // Set default skill tree on startup to map 0
+    public void enableSkillTreeDefault()
+    {
+        skillMaps[0].SetActive(true);
+        for (int i = 1; i < proficiencyListItems.Count; i++)
+        {
+                skillMaps[i].SetActive(false);
         }
     }
 }

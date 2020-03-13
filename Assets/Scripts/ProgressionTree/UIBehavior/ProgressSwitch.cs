@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ProgressSwitch : MonoBehaviour
 {
     public List<Sprite> sprites = new List<Sprite>();
-    private Image img;
+    private Image m_Img;
 
     // 0 = up
     // 1 = down
@@ -25,7 +25,7 @@ public class ProgressSwitch : MonoBehaviour
     void Start()
     {
         progressInt = 0;
-        img = GetComponent<Image>();
+        m_Img = GetComponent<Image>();
         switchActiveProgression();
     }
 
@@ -48,13 +48,13 @@ public class ProgressSwitch : MonoBehaviour
         switch (ECurrentProgressState)
         {
             case EProgressState.up:
-                img.sprite = sprites[0];
+                m_Img.sprite = sprites[0];
                 break;
             case EProgressState.down:
-                img.sprite = sprites[1];
+                m_Img.sprite = sprites[1];
                 break;
             case EProgressState.locked:
-                img.sprite = sprites[2];
+                m_Img.sprite = sprites[2];
                 break;
             default:
                 break;

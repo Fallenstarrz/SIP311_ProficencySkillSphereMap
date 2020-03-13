@@ -2,13 +2,13 @@
 
 public class Zoom : MonoBehaviour
 {
-    [SerializeField] float minSize = 0.5f;
-    [SerializeField] float maxSize = 1.5f;
+    [SerializeField] float m_MinSize = 0.5f;
+    [SerializeField] float m_MaxSize = 1.5f;
 
     [SerializeField] private float zoomRate = 3;
 
-    Vector3 difference;
-    Vector3 mousePos;
+    Vector3 m_Difference;
+    Vector3 m_MousePos;
 
     private void Update()
     {
@@ -23,19 +23,19 @@ public class Zoom : MonoBehaviour
     private void ChangeZoom(float scrollWheel)
     {
         float rate = 1 + zoomRate * Time.unscaledDeltaTime;
-        if (scrollWheel > 0 && transform.localScale.y > minSize)
+        if (scrollWheel > 0 && transform.localScale.y > m_MinSize)
         {
-            mousePos = Input.mousePosition;
-            SetZoom(Mathf.Clamp(transform.localScale.y / rate, minSize, maxSize));
-            difference = transform.position - mousePos;
-            transform.position = mousePos + (difference * 0.9F);
+            m_MousePos = Input.mousePosition;
+            SetZoom(Mathf.Clamp(transform.localScale.y / rate, m_MinSize, m_MaxSize));
+            m_Difference = transform.position - m_MousePos;
+            transform.position = m_MousePos + (m_Difference * 0.9F);
         }
-        else if (scrollWheel < 0 && transform.localScale.y < maxSize)
+        else if (scrollWheel < 0 && transform.localScale.y < m_MaxSize)
         {
-            mousePos = Input.mousePosition;
-            SetZoom(Mathf.Clamp(transform.localScale.y * rate, minSize, maxSize));
-            difference = transform.position - mousePos;
-            transform.position = mousePos + (difference * 1.11F);
+            m_MousePos = Input.mousePosition;
+            SetZoom(Mathf.Clamp(transform.localScale.y * rate, m_MinSize, m_MaxSize));
+            m_Difference = transform.position - m_MousePos;
+            transform.position = m_MousePos + (m_Difference * 1.11F);
         }
     }
 

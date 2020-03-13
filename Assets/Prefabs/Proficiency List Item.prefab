@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testObj: {fileID: 1259935072136684, guid: 41337bad43064394ea5ae0a45a83a33c, type: 2}
-  testSpawn: {fileID: 0}
 --- !u!114 &114175791352213116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,11 +519,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09366a7151113284f80455b155402d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillNameText: {fileID: 114069384919097224}
-  skillIcon: {fileID: 114841861448070568}
-  skillLevelText: {fileID: 114860922671723378}
-  skillExpFillBar: {fileID: 114145659818083968}
-  pointsAvailableText: {fileID: 114249598284099464}
+  m_SkillMap: {fileID: 0}
+  m_skillNameText: {fileID: 114069384919097224}
+  m_skillIcon: {fileID: 114841861448070568}
+  m_skillLevelText: {fileID: 114860922671723378}
+  m_skillExpFillBar: {fileID: 114145659818083968}
+  m_pointsAvailableText: {fileID: 114249598284099464}
+  m_levelMax: 0
 --- !u!114 &114341152174417906
 MonoBehaviour:
   m_ObjectHideFlags: 1

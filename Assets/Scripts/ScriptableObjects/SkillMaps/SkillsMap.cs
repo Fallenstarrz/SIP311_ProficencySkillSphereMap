@@ -20,8 +20,86 @@ public class SkillsMap : ScriptableObject
     public int skillLevelMax = 100;
     public int skillLevelCurrent = 0;
     [Header("Skill Experience")]
-    public int skillExpMax = 100;
-    public int skillExpCurrent = 0;
+    public float skillExpMax = 100;
+    public float skillExpCurrent = 0;
     [Header("Skill Points Available")]
     public int skillPointsAvailable = 0;
+    public int skillPointsSpent = 0;
+
+    // Toggle Status, Up, Down, Locked
+
+    public ProficiencySetup m_Proficiency;
+    public SkillMapSetup m_Map;
+
+    /// <summary>
+    /// Spend and Refund skills
+    /// </summary>
+    /// <param name="numPointsToSpend">Positive for increase, Negative for decrease</param>
+    public void spendPoints(int numPointsToSpend)
+    {
+        if (skillPointsAvailable >= numPointsToSpend)
+        {
+            skillPointsAvailable -= numPointsToSpend;
+            skillPointsSpent += numPointsToSpend; 
+        }
+        else
+        {
+            Debug.Log("Not enough points");
+        }
+    }
+
+    /// <summary>
+    /// Earn exp if not at level cap or would exceed level cap
+    /// Then update UI
+    /// </summary>
+    /// <param name="expGained">Experience to gain</param>
+    public void GainExp(float expGained)
+    {
+        if (checkLevelUp(expGained) == true)
+        {
+            skillExpCurrent = 0.0f;
+            skillExpMax = Mathf.Floor(skillExpMax * 1.1f);
+            skillLevelCurrent += 1;
+            skillPointsAvailable += 1;
+
+            m_Proficiency.updateUI();
+        }
+        else
+        {
+            if (skillExpCurrent + expGained > skillExpMax)
+            {
+                skillExpCurrent = skillExpMax - 1.0f;
+                m_Proficiency.updateUI();
+            }
+            else
+            {
+                skillExpCurrent += expGained;
+                m_Proficiency.updateUI();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Check to see if this skill can be leveled up
+    /// </summary>
+    /// <param name="expGained"></param>
+    /// <returns></returns>
+    public bool checkLevelUp(float expGained)
+    {
+        if ((skillExpCurrent + expGained) >= skillExpMax)
+        {
+            if (skillLevelCurrent < skillLevelMax)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
