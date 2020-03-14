@@ -5,26 +5,51 @@ using UnityEngine.UI;
 
 public class ProficiencyTotals : MonoBehaviour
 {
-    public Image m_IconImg;
-    public Text m_CurrentText;
+    public int m_TotalMax;
+    public int m_TotalCurrent;
     public Text m_TotalsText;
+
+    private void Start()
+    {
+        setCurrentSkillNumbers(m_TotalCurrent, m_TotalMax);
+    }
 
     private void OnEnable()
     {
-        UI_ToggleProficency.OnToggleActiveEvent += swapSprite;
-        // Subscribe to leveling event
+        // UI_ToggleProficency.OnToggleActiveEvent += swapSprite;
         // Subscribe to point spent event
     }
 
     private void OnDisable()
     {
-        UI_ToggleProficency.OnToggleActiveEvent -= swapSprite;
-        // UnSubscribe to leveling event
+        // UI_ToggleProficency.OnToggleActiveEvent -= swapSprite;
         // UnSubscribe to point spent event
     }
 
-    private void swapSprite(Sprite newSprite)
+    private void setCurrentSkillNumbers(int current, int total)
     {
-        m_IconImg.sprite = newSprite;
+        m_TotalsText.text = current + " / " + total;
+    }
+
+    public int getTotalMax()
+    {
+        return m_TotalMax;
+    }
+    public void setTotalMax(int newMax)
+    {
+        m_TotalMax = newMax;
+    }
+    public int getTotalCurrent()
+    {
+        return m_TotalCurrent;
+    }
+    public void setTotalCurrent(int newCurrent)
+    {
+        m_TotalCurrent = newCurrent;
+    }
+
+    public void modifyTotalMax(int amountToChange)
+    {
+        m_TotalMax += amountToChange;
     }
 }
