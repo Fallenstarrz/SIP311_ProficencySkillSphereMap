@@ -31,6 +31,11 @@ public class ProficiencyTotals : MonoBehaviour
         m_TotalsText.text = current + " / " + total;
     }
 
+    public void updateUI()
+    {
+        m_TotalsText.text = m_TotalCurrent + " / " + m_TotalMax;
+    }
+
     public int getTotalMax()
     {
         return m_TotalMax;

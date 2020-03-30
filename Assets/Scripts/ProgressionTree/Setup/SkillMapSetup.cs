@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class SkillMapSetup : MonoBehaviour
 {
-    SkillsMap m_SkillsMap;
+    public SkillsMap m_SkillsMap;
 
     [Header("Skill Background Texture")]
     public Image skillBackgroundTexture;
     [Header("Skill Background Image")]
     public Image skillBackgroundImage;
+
+    public void Start()
+    {
+        m_SkillsMap.m_Map = this;
+    }
 
     public void setupUI(SkillsMap newMap)
     {

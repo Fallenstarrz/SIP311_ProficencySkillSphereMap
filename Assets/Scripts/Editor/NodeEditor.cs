@@ -1,24 +1,18 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Node))]
+[CustomEditor(typeof(NodeCreator))]
 public class NodeEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        Node skillMap = (Node)target;
+        NodeCreator node = (NodeCreator)target;
 
-        if (GUILayout.Button("Create New Connection and Node"))
+        if (GUILayout.Button("Create New Node"))
         {
-            // Create new node
-            // Hook up the connection
-        }
-
-        if (GUILayout.Button("Create Connection To Existing Node"))
-        {
-
+            node.createNewNode();
         }
     }
 }

@@ -40,12 +40,16 @@ public class SkillsMap : ScriptableObject
         if (skillPointsAvailable >= numPointsToSpend)
         {
             skillPointsAvailable -= numPointsToSpend;
-            skillPointsSpent += numPointsToSpend; 
+            skillPointsSpent += numPointsToSpend;
+            ProficiencyTotals totals = FindObjectOfType<ProficiencyTotals>();
+            totals.setTotalCurrent(totals.getTotalCurrent() + numPointsToSpend);
+            totals.updateUI();
         }
         else
         {
             Debug.Log("Not enough points");
         }
+        m_Proficiency.updateUI();
     }
 
     /// <summary>

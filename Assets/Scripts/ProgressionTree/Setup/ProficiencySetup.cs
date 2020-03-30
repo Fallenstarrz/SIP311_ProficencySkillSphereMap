@@ -32,6 +32,7 @@ public class ProficiencySetup : MonoBehaviour
 
     private void Start()
     {
+        m_SkillMap.m_Proficiency = this;
         setupUI();
     }
 

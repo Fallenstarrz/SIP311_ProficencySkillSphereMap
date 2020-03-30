@@ -18,9 +18,9 @@ MonoBehaviour:
   backgroundTextureColor: {r: 0.15686275, g: 0.13725491, b: 0.17254902, a: 1}
   backgroundImg: {fileID: 21300000, guid: b499abd285263a849b031f94a2ccfbbc, type: 3}
   backgroundImgColor: {r: 0.043137256, g: 0, b: 0, a: 1}
-  skillLevelMax: 100
+  skillLevelMax: 20
   skillLevelCurrent: 0
-  skillExpMax: 100
+  skillExpMax: 5000
   skillExpCurrent: 0
   skillPointsAvailable: 0
   skillPointsSpent: 0
